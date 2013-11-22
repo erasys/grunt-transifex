@@ -2,7 +2,6 @@
   "name": "grunt-transifex",
   "version": "0.1.0",
   "description": "Grunt plugin for downloading translation strings from Transifex",
-  "main": "index.js",
   "scripts": {
     "test": "npm test"
   },
@@ -11,11 +10,21 @@
     "url": "git@git.erasys.de:tools/grunt-transifex.git"
   },
   "keywords": [
-    "grunt",
+    "gruntplugin",
     "transifex",
-    "i18n",
-    "gettext"
+    "i18n"
   ],
   "author": "Erasys",
-  "license": "Custom"
+  "license": "Custom",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "async": "~0.2.9",
+    "request": "~2.27.0",
+    "grunt": "~0.4.2"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  }
 }
