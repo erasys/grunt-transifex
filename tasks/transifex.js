@@ -1,19 +1,44 @@
 
+var async = require('async'),
+    _ = require('underscore'),
+    credentials = require('../lib/credentials'),
+    Transifex = require('../lib/transifex-api');
+
 module.exports = function(grunt) {
   grunt.registerMultiTask("transifex", "Grunt task that downloads string translations from Transifex", function() {
+    var self = this;
+
     /* Extend given options with some defaults */
     this.options = this.options({
       resources: '*',
-      languages: '*'
+      languages: '*',
+      endpoint : 'http://www.transifex.com/api/2',
+      project  : this.target,
+      reviewed : this.flags.reviewed,
+      templateFn: function(strings) { return _.object(_.pluck(strings, "key"), _.pluck(strings, "translation")); }
     });
 
+    /** Attempt to create target directory
+     * and fail if it doesn't work */
     if (!this.options.targetDir) {
       grunt.fatal("Please provide 'targetDir' option");
     }
+    grunt.file.mkdir(this.options.targetDir);
 
-    /* Should log project slug and any options in Gruntfile */
-    console.log("Project slug:", this.target);
-    console.log("Flags:", this.flags);
-    console.log("Options:", this.options);
+    /** Ensure we find some Transifex credentials
+     * then do the main work */
+    var done = this.async();
+    credentials.read(function(err, creds) {
+      self.options.credentials = creds;
+      var api = new Transifex(self.options);
+
+      async.waterfall([
+        api.availableResources,
+        api.resourceDetails,
+        api.prepareRequests,
+        api.fetchStrings,
+        api.writeLanguageFiles
+      ], done);
+    });
   });
-};
+}
