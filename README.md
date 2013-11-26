@@ -64,4 +64,4 @@ node_modules/grunt-cli/bin/grunt transifex::reviewed
 popd
 ```
 
-The cron script installs the `grunt-transifex` plugin from a specific Git tag, so pushing changes to `master` won't jeopardize any fonctionnality on the live system.
+The cron script installs the `grunt-transifex` plugin from a specific Git tag, so pushing changes to `master` won't jeopardize any fonctionnality on the live system.
