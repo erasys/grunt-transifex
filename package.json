@@ -1,6 +1,6 @@
 {
   "name": "grunt-transifex",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Grunt plugin for downloading translation strings from Transifex",
   "scripts": {
     "test": "npm test"
