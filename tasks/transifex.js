@@ -15,7 +15,8 @@ module.exports = function(grunt) {
       endpoint : 'http://www.transifex.com/api/2',
       project  : this.target,
       reviewed : this.flags.reviewed,
-      templateFn: function(strings) { return _.object(_.pluck(strings, "key"), _.pluck(strings, "translation")); }
+      filename : "_resource_/_lang_.json",
+      templateFn: function(strings) { return JSON.stringify(_.object(_.pluck(strings, "key"), _.pluck(strings, "translation"))); }
     });
 
     /** Attempt to create target directory
@@ -41,4 +42,4 @@ module.exports = function(grunt) {
       ], done);
     });
   });
-}
+};
