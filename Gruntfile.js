@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         options: {
           targetDir: "./translations/ios-ready", // download specified resources / langs only
           resources: ["localizable_enstrings"],
-          languages: ["en_US", "fr"]
+          languages: ["en", "fr", "en_US"]
         }
       },
       "new-admintool": {
