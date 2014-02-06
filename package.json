@@ -3,19 +3,19 @@
   "version": "0.1.1",
   "description": "Grunt plugin for downloading translation strings from Transifex",
   "scripts": {
-    "test": "npm test"
+    "test": "echo \"Error. No tests yet!\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.erasys.de:tools/grunt-transifex.git"
+    "url": "https://github.com/erasys/grunt-transifex"
   },
   "keywords": [
     "gruntplugin",
     "transifex",
     "i18n"
   ],
-  "author": "Erasys",
-  "license": "Custom",
+  "author": "Erasys GmbH",
+  "license": "MIT",
   "engines": {
     "node": ">= 0.8.0"
   },

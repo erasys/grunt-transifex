@@ -1,6 +1,6 @@
 # grunt-transifex
 
-Provides a Grunt task that downloads translation strings from Transifex into your project.
+Provides a Grunt task that downloads translation strings from Transifex into your project using the [Transifex API](http://support.transifex.com/customer/portal/topics/440186-api/articles).
 
 ## Usage
 
@@ -10,20 +10,25 @@ Provides a Grunt task that downloads translation strings from Transifex into you
     transifex: {
       "ios-ready": {
         options: {
-          targetDir: "./translations/ios-ready", // download specified resources / langs only
+          targetDir: "./translations/ios-ready",         // download specified resources / langs only
           resources: ["localizable_enstrings"],
-          languages: ["en_US", "fr"]
+          languages: ["en_US", "fr"],
+          filename : "_resource_-_lang_.json",
+          templateFn: function(strings) { return ...; }  // customize the output file format (see below)
         }
       },
       "new-admintool": {
         options: {
-          targetDir: "./translations/admintool-i18n" // download all available resources in all languages
+          targetDir: "./translations/admintool-i18n"     // download all available resources in all languages
+          									              // using the default filename layout: _resource_/_lang_.json
         }
       }
     }
 ```
 
-This configuration enables running the `transifex` Grunt task on the command line.  The following shows a sample of possible usage cases:
+You can configure several projects: the `transifex` task will process each one of them in series.
+
+This configuration enables running the `transifex` Grunt task on the command line.  The following shows a sample of possible usage scenarios:
 
 
 ```bash  
@@ -39,29 +44,24 @@ This configuration enables running the `transifex` Grunt task on the command lin
      --> Same as above, but downloads reviewed strings only
 ```
 
+Translated strings will saved into plain JSON if you use the default output configuration:
+
+```json
+{
+	"key_welcome": "Bienvenue",
+	"key_register": "Enregistrez-vous!"
+}
+```
 
 ## Transifex credentials
 
-When the plugin is run for the first time, it will prompt the user for a Transifex username and password.
+When the plugin runs for the first time, it will prompt the user for a Transifex username and password.
 It will store this information in a `.transifexrc` file created in the current directory. 
 
 On subsequent executions, the user won't be prompted again. Transifex credentials will be read from `.transifexrc`
 
+## Advanced customization
 
-## Usage in the live system
+Using the `templateFn` hook function in Grunt's `transifex` configuration section, you can customize the output file format to anything you want.
 
-On the live system, a cronjob will be launching this plugin in order to regularly update translation files.
-It relies on a `Gruntfile.js` located in `/var/www/files/script/transifex`. 
-
-This `Gruntfile` must hold the description of all project slugs / resource slugs / language codes that might need to be handled on the live system.
-
-The cron script is just doing this:
-
-```bash
-pushd /var/www/script/transifex
-npm install
-node_modules/grunt-cli/bin/grunt transifex::reviewed
-popd
-```
-
-The cron script installs the `grunt-transifex` plugin from a specific Git tag, so pushing changes to `master` won't jeopardize any fonctionnality on the live system.
+This function operates on the [Transifex strings API](http://support.transifex.com/customer/portal/articles/1026117-translation-strings-api) output array.
