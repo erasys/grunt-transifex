@@ -20,13 +20,13 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "async": "~0.2.9",
-    "request": "~2.27.0",
-    "grunt": "~0.4.2",
-    "inquirer": "~0.3.5",
-    "underscore": "~1.5.2"
+    "async": "~0.8.0",
+    "request": "~2.34.0",
+    "grunt": "~0.4.4",
+    "inquirer": "~0.4.1",
+    "underscore": "~1.6.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.2"
+    "grunt": "~0.4.4"
   }
 }
