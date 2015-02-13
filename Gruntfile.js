@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     transifex: {
       "ios-ready": {
         options: {
-          project: "rrportal"
+          project: "rrportal",
           targetDir: "./translations/ios-ready", // download specified resources / langs only
           resources: ["localizable_enstrings"],
           languages: ["en", "fr", "en_US"],
