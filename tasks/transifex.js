@@ -16,6 +16,7 @@ module.exports = function(grunt) {
       project  : this.target,
       reviewed : this.flags.reviewed,
       mode: "json",
+      useSlug: true,
       filename : "_resource_/_lang_.json",
       templateFn: function(strings) { return JSON.stringify(_.object(_.pluck(strings, "key"), _.pluck(strings, "translation"))); }
     });
