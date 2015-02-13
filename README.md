@@ -2,6 +2,11 @@
 
 Provides a Grunt task that downloads translation strings from Transifex into your project using the [Transifex API](http://support.transifex.com/customer/portal/topics/440186-api/articles).
 
+This fork adds a couple of config options to the original grunt plugin by erasys
+* skipResources: if you want all expect a couple of resources 
+* skipLanguages: if the list of languages you don't want is shorter than the list you do want
+* useSlug: The original plugin uses the slug for name, which loses capitalization. For example, if the uploaded files was uploadedFile.properties, the japanese download could be uploadedfile_ja.properties. Setting useSlug to false is able to spit out uploadedFile_jap.properties.
+
 ## Usage
 
 `Gruntfile.js` shows some configuration examples.  The plugin is configured by adding a `transifex` section into the Grunt config:
