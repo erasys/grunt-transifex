@@ -10,6 +10,7 @@ module.exports = function(grunt) {
           targetDir: "./translations/ios-ready", // download specified resources / langs only
           resources: ["localizable_enstrings"],
           languages: ["en", "fr", "en_US"],
+          skipLanguages: ["en"],
           useSlug: false                                // instead of using tx slug, try to use the orignal uploaded file for resource
         }
       },

@@ -12,6 +12,7 @@ module.exports = function(grunt) {
     this.options = this.options({
       resources: '*',
       languages: '*',
+      skipLanguages: [],
       endpoint : 'http://www.transifex.com/api/2',
       project  : this.target,
       reviewed : this.flags.reviewed,

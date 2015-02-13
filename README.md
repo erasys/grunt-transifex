@@ -14,6 +14,7 @@ Provides a Grunt task that downloads translation strings from Transifex into you
           targetDir: "./translations/ios-ready",         // download specified resources / langs only
           resources: ["localizable_enstrings"],
           languages: ["en_US", "fr"],
+          skipLanguages: ["en"],                         // useful for "all languages but english"
           useSlug: false,                                // instead of using tx slug, try to use the orignal uploaded file for resource
           filename : "_resource_-_lang_.json",
           templateFn: function(strings) { return ...; }  // customize the output file format (see below)
