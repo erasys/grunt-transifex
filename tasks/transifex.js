@@ -11,6 +11,7 @@ module.exports = function(grunt) {
     /* Extend given options with some defaults */
     this.options = this.options({
       resources: '*',
+      skipResources: [],
       languages: '*',
       skipLanguages: [],
       endpoint : 'http://www.transifex.com/api/2',

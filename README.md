@@ -13,6 +13,7 @@ Provides a Grunt task that downloads translation strings from Transifex into you
           project: "rrportal"                            // your transifect project
           targetDir: "./translations/ios-ready",         // download specified resources / langs only
           resources: ["localizable_enstrings"],
+          skipResources: ["unusedproperties"],           // useful for "all resources except these couple". In "slug" format
           languages: ["en_US", "fr"],
           skipLanguages: ["en"],                         // useful for "all languages but english"
           useSlug: false,                                // instead of using tx slug, try to use the orignal uploaded file for resource
