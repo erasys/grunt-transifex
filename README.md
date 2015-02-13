@@ -10,9 +10,11 @@ Provides a Grunt task that downloads translation strings from Transifex into you
     transifex: {
       "ios-ready": {
         options: {
+          project: "rrportal"                            // your transifect project
           targetDir: "./translations/ios-ready",         // download specified resources / langs only
           resources: ["localizable_enstrings"],
           languages: ["en_US", "fr"],
+          useSlug: false,                                // instead of using tx slug, try to use the orignal uploaded file for resource
           filename : "_resource_-_lang_.json",
           templateFn: function(strings) { return ...; }  // customize the output file format (see below)
         }
@@ -37,7 +39,7 @@ This configuration enables running the `transifex` Grunt task on the command lin
         'en_US' and 'fr'
    grunt transifex:ios-ready:reviewed
      --> Same as above, but downloads reviewed strings only
-  
+
    grunt transifex
      --> Downloads reviewed & non-reviewed strings for all configured Transifex projects
    grunt transifex::reviewed
@@ -56,7 +58,7 @@ Translated strings will saved into plain JSON if you use the default output conf
 ## Transifex credentials
 
 When the plugin runs for the first time, it will prompt the user for a Transifex username and password.
-It will store this information in a `.transifexrc` file created in the current directory. 
+It will store this information in a `.transifexrc` file created in the current directory.
 
 On subsequent executions, the user won't be prompted again. Transifex credentials will be read from `.transifexrc`
 
