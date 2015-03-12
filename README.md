@@ -1,8 +1,13 @@
 # grunt-transifex
 
-Provides a Grunt task that downloads translation strings from Transifex into your project using the [Transifex API](http://support.transifex.com/customer/portal/topics/440186-api/articles).
+Provides a Grunt task that uploads new & existing source files to Transifex and downloads translation strings from Transifex into your project using the [Transifex API](http://support.transifex.com/customer/portal/topics/440186-api/articles).
 
-This fork adds a couple of config options to the original grunt plugin by erasys
+This fork adds uploading and a couple of config options to the original grunt plugin by erasys
+Uploading (transifex-upload):
+* uploading of new files
+* uploading/overwriting of existing files
+
+Downloading (transifex):
 * skipResources: if you want all expect a couple of resources 
 * skipLanguages: if the list of languages you don't want is shorter than the list you do want
 * useSlug: The original plugin uses the slug for name, which loses capitalization. For example, if the uploaded files was uploadedFile.properties, the japanese download could be uploadedfile_ja.properties. Setting useSlug to false is able to spit out uploadedFile_ja.properties.
