@@ -17,7 +17,8 @@ module.exports = function(grunt) {
       reviewed : this.flags.reviewed,
       mode: "json",
       filename : "_resource_/_lang_.json",
-      templateFn: function(strings) { return JSON.stringify(_.object(_.pluck(strings, "key"), _.pluck(strings, "translation"))); }
+      templateFn: function(strings) { return JSON.stringify(_.object(_.pluck(strings, "key"), _.pluck(strings, "translation"))); },
+      filterEmpty:true
     });
 
     /** Attempt to create target directory
