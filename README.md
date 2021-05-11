@@ -2,6 +2,8 @@
 
 This repository is no longer actively maintained. Use at your own risk.
 
+![No Maintenance Intended](http://unmaintained.tech/badge.svg)
+
 # grunt-transifex
 
 Provides a Grunt task that downloads translation strings from Transifex into your project using the [Transifex API](http://support.transifex.com/customer/portal/topics/440186-api/articles).
